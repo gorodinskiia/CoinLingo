@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="polymorphia.characters.FighterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-25T01:02:53.995Z" hostname="SkrillexIsMyDad" time="0.001">
+  <properties/>
+  <testcase name="testFighting()" classname="polymorphia.characters.FighterTest" time="0.001"/>
+  <system-out><![CDATA[?[33mRoom only room has no neighbors. Connecting it to another room.
+?[0;39m?[33mWeakFighter is fighting Ogre(8.00)
+?[0;39m?[33mWeakFighter rolled 1
+?[0;39m?[33mOgre(8.00) rolled 5
+?[0;39m?[33mWeakFighter just died!
+?[0;39m?[33mWeakFighter fought Ogre and lost!
+?[0;39m]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
