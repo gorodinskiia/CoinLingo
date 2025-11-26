@@ -19,3 +19,5 @@ Candlestick history
 User dashboards
 
 Real-time caching
+
+http://localhost:8080/login

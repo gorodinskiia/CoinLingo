@@ -1,6 +1,17 @@
 package com.cointrade.terminal.PostgreSQL;
 
 import jakarta.persistence.*; // JPA annotations for entity mapping 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.time.LocalDateTime;
+import java.math.BigDecimal;
+// Import your entities
+import com.cointrade.terminal.PostgreSQL.Orders;
+import com.cointrade.terminal.PostgreSQL.Trade;
+import com.cointrade.terminal.PostgreSQL.Balance;  
+
 
 //This Class represents a User entity mapped to the "users" table in the database
 //Users table will store user information such as username, password, email, and daily streak
@@ -10,7 +21,7 @@ import jakarta.persistence.*; // JPA annotations for entity mapping
 public class User {
 
     @Id //Primary key of the entity
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Auto-generates the primary key value
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Auto-generates the primary key value and auto-increments it   
     private Long id;  // primary key
 
     @Column(nullable = false, unique = true) // username must be unique and not null
@@ -24,6 +35,16 @@ public class User {
 
     @Column(nullable = false) // dailyStreak cannot be null
     private int dailyStreak;
+
+    // One-to-many relationships
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Orders> orders = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Trade> trades = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Balance> balances = new ArrayList<>();
 
     public User() 
     {
@@ -81,6 +102,30 @@ public class User {
     public void setDailyStreak(int dailyStreak) 
     { 
         this.dailyStreak = dailyStreak; 
+    }
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
+
+    public List<Trade> getTrades() {
+        return trades;
+    }
+
+    public void setTrades(List<Trade> trades) {
+        this.trades = trades;
+    }
+
+    public List<Balance> getBalances() {
+        return balances;
+    }
+
+    public void setBalances(List<Balance> balances) {
+        this.balances = balances;
     }
 }
 

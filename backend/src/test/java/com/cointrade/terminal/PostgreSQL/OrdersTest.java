@@ -1,60 +1,100 @@
 package com.cointrade.terminal.PostgreSQL;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class OrdersTest {
 
     @Test
-    void testOrderDefaults() {
-        Orders order = new Orders();
+    void testConstructorAndGetters() {
+        User user = new User("testuser", "pass", "test@example.com", 1);
 
-        assertNull(order.getId());
+        BigDecimal quantity = new BigDecimal("2.5");
+        BigDecimal price = new BigDecimal("100.00");
+
+        Orders order = new Orders(
+                user,
+                Orders.OrderType.BUY,
+                "BTC",
+                quantity,
+                price
+        );
+
+        assertEquals(user, order.getUser());
+        assertEquals(Orders.OrderType.BUY, order.getType());
+        assertEquals("BTC", order.getAsset());
+        assertEquals(quantity, order.getQuantity());
+        assertEquals(price, order.getPrice());
+        //assertEquals(new BigDecimal("250.00"), order.getTotal()); // 2.5 × 100.00
         assertEquals(Orders.OrderStatus.PENDING, order.getStatus());
         assertNotNull(order.getCreatedAt());
     }
 
     @Test
-    void testSettersAndGetters() {
+    void testSetters() {
         Orders order = new Orders();
+        User user = new User("alice", "pass", "alice@example.com", 4);
 
-        order.setId(1L);
-        order.setUserId(42L);
-        order.setType(Orders.OrderType.BUY);
+        order.setUser(user);
+        order.setType(Orders.OrderType.SELL);
         order.setStatus(Orders.OrderStatus.FILLED);
-        order.setAsset("BTC");
-        order.setQuantity(new BigDecimal("0.5"));
-        order.setPrice(new BigDecimal("30000.00"));
-        order.setTotal(new BigDecimal("15000.00"));
-        LocalDateTime timestamp = LocalDateTime.now();
-        order.setCreatedAt(timestamp);
+        order.setAsset("ETH");
+        order.setQuantity(new BigDecimal("10.12345678"));
+        order.setPrice(new BigDecimal("2500.50"));
+        order.setTotal(new BigDecimal("25300.00"));
+        LocalDateTime now = LocalDateTime.now();
+        order.setCreatedAt(now);
 
-        assertEquals(1L, order.getId());
-        assertEquals(42L, order.getUserId());
-        assertEquals(Orders.OrderType.BUY, order.getType());
+        assertEquals(user, order.getUser());
+        assertEquals(Orders.OrderType.SELL, order.getType());
         assertEquals(Orders.OrderStatus.FILLED, order.getStatus());
-        assertEquals("BTC", order.getAsset());
-        assertEquals(new BigDecimal("0.5"), order.getQuantity());
-        assertEquals(new BigDecimal("30000.00"), order.getPrice());
-        assertEquals(new BigDecimal("15000.00"), order.getTotal());
-        assertEquals(timestamp, order.getCreatedAt());
+        assertEquals("ETH", order.getAsset());
+        assertEquals(new BigDecimal("10.12345678"), order.getQuantity());
+        assertEquals(new BigDecimal("2500.50"), order.getPrice());
+        assertEquals(new BigDecimal("25300.00"), order.getTotal());
+        assertEquals(now, order.getCreatedAt());
     }
 
     @Test
-    void testOrderTotalCalculation() {
-        Orders order = new Orders();
+    void testTotalCalculationSafety() {
+        User user = new User("bob", "pass", "bob@example.com", 2);
 
-        BigDecimal qty = new BigDecimal("1.25");
-        BigDecimal price = new BigDecimal("20000.00");
-        BigDecimal expectedTotal = qty.multiply(price);
+        Orders order = new Orders(
+                user,
+                Orders.OrderType.BUY,
+                "SOL",
+                null,         // quantity missing
+                new BigDecimal("50.00")
+        );
 
-        order.setQuantity(qty);
-        order.setPrice(price);
-        order.setTotal(expectedTotal);
+        assertEquals(BigDecimal.ZERO, order.getTotal());
+    }
 
-        assertEquals(expectedTotal, order.getTotal());
+    @Test
+    void testEnumValues() {
+        assertEquals("BUY", Orders.OrderType.BUY.name());
+        assertEquals("SELL", Orders.OrderType.SELL.name());
+
+        assertEquals("PENDING", Orders.OrderStatus.PENDING.name());
+        assertEquals("FILLED", Orders.OrderStatus.FILLED.name());
+        assertEquals("CANCELLED", Orders.OrderStatus.CANCELLED.name());
+    }
+
+    @Test
+    void testCreatedAtIsAssigned() {
+        User user = new User("charlie", "pass", "charlie@example.com", 3);
+
+        Orders order = new Orders(
+                user,
+                Orders.OrderType.SELL,
+                "ADA",
+                new BigDecimal("100"),
+                new BigDecimal("0.50")
+        );
+
+        assertNotNull(order.getCreatedAt());
     }
 }

@@ -12,8 +12,9 @@ public class Balance {
     private Long id;
 
     // User this balance belongs to
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     // Example: "BTC", "ETH", "USDT"
     @Column(nullable = false, length = 10)
@@ -27,11 +28,10 @@ public class Balance {
     @Column(name = "usd_value", precision = 19, scale = 2)
     private BigDecimal usdValue;
 
-    public Balance() {
-    }
+    public Balance() {}
 
-    public Balance(Long userId, String asset, BigDecimal amount, BigDecimal usdValue) {
-        this.userId = userId;
+    public Balance(User user, String asset, BigDecimal amount, BigDecimal usdValue) {
+        this.user = user;
         this.asset = asset;
         this.amount = amount;
         this.usdValue = usdValue;
@@ -43,12 +43,12 @@ public class Balance {
         return id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {      // FIXED
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {   // FIXED
+        this.user = user;
     }
 
     public String getAsset() {

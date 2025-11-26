@@ -4,33 +4,34 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity // Makes a class a JPA entity or Database Table 
-@Table(name = "orders") // Specifies the name of the database table to be used for mapping
+@Entity
+@Table(name = "orders")
 public class Orders {
 
-    @Id // Primary key of the entity
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // primary key
+    private Long id;
 
-    // The user placing the order
-    @Column(nullable = false) // foreign key to Users table
-    private Long userId;
+    // User who placed the order
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    // buy or sell
-    @Enumerated(EnumType.STRING) // Specifies that the enum should be persisted as a string in the database
+    // BUY or SELL
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private OrderType type;
 
-    // pending, filled, cancelled
+    // PENDING, FILLED, CANCELLED
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private OrderStatus status = OrderStatus.PENDING;
 
-    // Which crypto (BTC, ETH, DOGE, etc.)
+    // Example: BTC, ETH, SOL
     @Column(nullable = false)
     private String asset;
 
-    // How much crypto
+    // Amount of crypto
     @Column(nullable = false, precision = 19, scale = 8)
     private BigDecimal quantity;
 
@@ -38,7 +39,7 @@ public class Orders {
     @Column(nullable = false, precision = 19, scale = 8)
     private BigDecimal price;
 
-    // Total = quantity * price
+    // quantity × price
     @Column(nullable = false, precision = 19, scale = 8)
     private BigDecimal total;
 
@@ -47,22 +48,35 @@ public class Orders {
 
     public Orders() {}
 
-    // getters and setters
+    public Orders(User user, OrderType type, String asset, BigDecimal quantity, BigDecimal price) {
+        this.user = user;
+        this.type = type;
+        this.asset = asset;
+        this.quantity = quantity;
+        this.price = price;
+
+        // SAFE total calculation
+        this.total = (quantity != null && price != null)
+            ? quantity.multiply(price)
+            : BigDecimal.ZERO;
+
+        this.status = OrderStatus.PENDING;
+        this.createdAt = LocalDateTime.now();
+    }
+
+
+    // ---------- Getters & Setters ----------
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public User getUser() {
+        return user;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public OrderType getType() {
@@ -120,13 +134,16 @@ public class Orders {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-    
-    // Enums for type and status
+
+    // ---------- ENUMS ----------
     public enum OrderType {
-        BUY, SELL
+        BUY,
+        SELL
     }
 
     public enum OrderStatus {
-        PENDING, FILLED, CANCELLED
+        PENDING,
+        FILLED,
+        CANCELLED
     }
 }

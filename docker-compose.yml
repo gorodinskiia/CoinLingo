@@ -32,10 +32,10 @@ services:
       - postgres
       - mongodb
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/cointrade
+      SPRING_DATASOURCE_URL: jdbc:postgresql://cointrade-postgres:5432/cointrade
       SPRING_DATASOURCE_USERNAME: coinuser
       SPRING_DATASOURCE_PASSWORD: your_password
-      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/cointrade
+      SPRING_DATA_MONGODB_URI: mongodb://cointrade-mongo:27017/cointrade
     restart: unless-stopped
 
 volumes:
