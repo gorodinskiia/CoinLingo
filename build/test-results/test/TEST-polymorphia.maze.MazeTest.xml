@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="polymorphia.maze.MazeTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-11-25T01:02:54Z" hostname="SkrillexIsMyDad" time="0.008">
+<testsuite name="polymorphia.maze.MazeTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-11-26T01:13:02.488Z" hostname="SkrillexIsMyDad" time="0.006">
   <properties/>
-  <testcase name="testHasLivingCreatures()" classname="polymorphia.maze.MazeTest" time="0.001"/>
+  <testcase name="testHasLivingCreatures()" classname="polymorphia.maze.MazeTest" time="0.0"/>
   <testcase name="testToString()" classname="polymorphia.maze.MazeTest" time="0.001"/>
   <testcase name="testSequentialDistribution()" classname="polymorphia.maze.MazeTest" time="0.001"/>
-  <testcase name="testRandomDistribution()" classname="polymorphia.maze.MazeTest" time="0.002"/>
+  <testcase name="testRandomDistribution()" classname="polymorphia.maze.MazeTest" time="0.001"/>
   <testcase name="testHasLivingAdventurers()" classname="polymorphia.maze.MazeTest" time="0.001"/>
-  <testcase name="testCreationOf2x2Grid()" classname="polymorphia.maze.MazeTest" time="0.001"/>
-  <testcase name="testCreationOf3x3Grid()" classname="polymorphia.maze.MazeTest" time="0.001"/>
+  <testcase name="testCreationOf2x2Grid()" classname="polymorphia.maze.MazeTest" time="0.0"/>
+  <testcase name="testCreationOf3x3Grid()" classname="polymorphia.maze.MazeTest" time="0.0"/>
   <system-out><![CDATA[?[33m	Northwest:
 		
 
 
 	Northeast:
-		
+		Ogre(5.00)
 
 
 	Southwest:
-		Ogre(5.00)
+		
 
 
 	Southeast:
 		Bilbo(10.00)
 
 ?[0;39m?[33m	Northwest:
-		
+		Bilbo(10.00)
 
 
 	Northeast:
-		Fiona(10.00)
+		Ogre(5.00)
 
 
 	Southwest:
-		Bilbo(10.00)
+		Fiona(10.00)
 
 
 	Southeast:
-		Ogre(5.00)
+		
 
 ?[0;39m?[33m	Northwest:
-		
+		Troll(5.00)
 
 
 	North:
-		Medusa(5.00)
+		
 
 
 	Northeast:
@@ -51,11 +51,12 @@
 
 
 	West:
-		Troll(5.00)
+		Dragon(5.00)
+		Orc(5.00)
 
 
 	Center:
-		
+		Medusa(5.00)
 
 
 	East:
@@ -67,11 +68,11 @@
 
 
 	South:
-		Orc(5.00)
+		
 
 
 	Southeast:
-		Dragon(5.00)
+		
 
 ?[0;39m]]></system-out>
   <system-err><![CDATA[]]></system-err>

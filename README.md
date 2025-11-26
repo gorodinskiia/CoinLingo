@@ -1,5 +1,7 @@
 # **CoinTrade Terminal**
 
+### RUN THIS DAILY MONTHLY AND YEARLY chmod +x gradlew
+
 ### _A web-based cryptocurrency trading simulator built with React, Spring Boot, and MongoDB._
 
 ---
