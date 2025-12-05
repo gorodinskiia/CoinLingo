@@ -1,6 +1,13 @@
 # **CoinTrade Terminal**
 
 ### RUN THIS DAILY MONTHLY AND YEARLY chmod +x gradlew
+### sudo service postgresql start
+### sudo -u postgres psql
+
+### TO SEE PAGE
+### sudo dockerd
+### docker compose down -v
+### docker compose up
 
 ### _A web-based cryptocurrency trading simulator built with React, Spring Boot, and MongoDB._
 

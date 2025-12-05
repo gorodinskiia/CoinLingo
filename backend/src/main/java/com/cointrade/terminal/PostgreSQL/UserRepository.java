@@ -3,8 +3,9 @@ package com.cointrade.terminal.PostgreSQL;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    // You can add custom queries if needed
-    User findByUsername(String username);
+    Optional<User> findByUsername(String username);
 }
