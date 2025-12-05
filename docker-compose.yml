@@ -9,18 +9,9 @@ services:
       POSTGRES_USER: coinuser
       POSTGRES_PASSWORD: your_password
     ports:
-      - "5433:5432"
+      - "5433:5432"  # host:container
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    restart: always
-
-  mongodb:
-    image: mongo:6
-    container_name: cointrade-mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
     restart: always
 
   backend:
@@ -30,14 +21,11 @@ services:
       - "8080:8080"
     depends_on:
       - postgres
-      - mongodb
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://cointrade-postgres:5432/cointrade
       SPRING_DATASOURCE_USERNAME: coinuser
       SPRING_DATASOURCE_PASSWORD: your_password
-      SPRING_DATA_MONGODB_URI: mongodb://cointrade-mongo:27017/cointrade
     restart: unless-stopped
 
 volumes:
   postgres-data:
-  mongo-data:

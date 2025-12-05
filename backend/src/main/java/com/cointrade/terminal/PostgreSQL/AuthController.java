@@ -15,4 +15,11 @@ public class AuthController {
     public String dashboard() {
         return "dashboard"; // Returns dashboard.html
     }
+
+    @GetMapping("/register")
+    public String registerPage() {
+        return "register"; // points to register.html
+    }
+
+
 }
