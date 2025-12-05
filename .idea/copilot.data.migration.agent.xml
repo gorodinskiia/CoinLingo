@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AgentMigrationStateService">
+    <option name="pendingSessionIds">
+      <option value="1462434b-6e14-425b-aaf3-240a1e739923" />
+    </option>
+    <option name="pendingTurns">
+      <map>
+        <entry key="1462434b-6e14-425b-aaf3-240a1e739923">
+          <value>
+            <set>
+              <option value="ef9369cd-1d3b-49e1-b57b-e11a3a571f29" />
+              <option value="8ac98100-bcf7-4e89-8dcc-b5f0d19a07a4" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <pendingWorkingSetItems>
+      <entry key="1462434b-6e14-425b-aaf3-240a1e739923">
+        <set>
+          <option value="file://$PROJECT_DIR$/frontend/src/mocks/marketMock.js" />
+          <option value="file://$PROJECT_DIR$/frontend/src/mocks/ordersMock.js" />
+          <option value="file://$PROJECT_DIR$/frontend/src/components/MarketData.jsx" />
+          <option value="file://$PROJECT_DIR$/frontend/src/components/OrderBook.jsx" />
+          <option value="file://$PROJECT_DIR$/frontend/src/components/OrderPanel.jsx" />
+          <option value="file://$PROJECT_DIR$/frontend/src/components/Instructions.jsx" />
+          <option value="file://$PROJECT_DIR$/frontend/src/components/componentStyles.css" />
+          <option value="file://$PROJECT_DIR$/frontend/src/App.jsx" />
+          <option value="file://$PROJECT_DIR$/frontend/src/pages/Login.jsx" />
+        </set>
+      </entry>
+    </pendingWorkingSetItems>
+  </component>
+</project>
