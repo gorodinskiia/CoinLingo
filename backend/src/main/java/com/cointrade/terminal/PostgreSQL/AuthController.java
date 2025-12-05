@@ -34,7 +34,7 @@ public class AuthController {
         //logger.info("Register called with user: {}", user.getUsername());
         // save user
 
-        userRepository.save(user);
+        //userRepository.save(user);
 
         return "redirect:/login";
     }
