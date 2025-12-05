@@ -6,7 +6,7 @@
 
 ## **📌 Overview**
 
-**CoinTrade Terminal** is a web-based, simulated cryptocurrency trading platform designed for education and demonstration.  
+**CoinLingo Terminal** is a web-based, simulated cryptocurrency trading platform designed for education and demonstration.  
 Users can trade major coins in a virtual environment using real-time market data, manage orders, and track portfolios — with all data persisted in **MongoDB**.  
 The frontend is built in **React**, while the backend runs on **Java (Spring Boot)**.
 
@@ -17,7 +17,7 @@ The frontend is built in **React**, while the backend runs on **Java (Spring Boo
 - Deliver a fast, intuitive, and educational trading simulation.
 - Allow users to place mock buy/sell orders and observe price changes in real time.
 - Provide a responsive, interactive UI with clear visual cues.
-- Persist user accounts, orders, and portfolios securely in MongoDB.
+- Persist user accounts, orders, a streak, and portfolios securely in MongoDB.
 
 ---
 
@@ -27,7 +27,7 @@ The frontend is built in **React**, while the backend runs on **Java (Spring Boo
   Secure sign-up/login using Spring Security.
 
 - **Real-Time Coin Price Feed**  
-  Uses public APIs (e.g., CoinGecko) to fetch live market data.
+  Uses public APIs (e.g., Kraken) to fetch live market data.
 
 - **Trading Functionality**  
   Mock buy/sell orders with validation and automatic account/portfolio updates.
@@ -54,16 +54,16 @@ The frontend is built in **React**, while the backend runs on **Java (Spring Boo
 
 ## **🧰 Technical Requirements & Solutions**
 
-| Requirement | Solution / Technology | Satisfied? |
-|------------|------------------------|------------|
-| OO Language | Java (Spring Boot backend) | ✅ |
-| RESTful Service | CoinGecko API, backend REST endpoints | ✅ |
-| Web-Based UI | React (JS/TS) | ✅ |
-| Persisted State | MongoDB (users, accounts, orders, portfolios) | ✅ |
-| Dependency Injection | Spring Boot services, repositories | ✅ |
-| Abstractions/Polymorphism | Domain models for trades/orders/accounts | ✅ |
-| Responsive Design | React grid / drag-and-drop libs | ✅ |
-| Security/Data Protection | JWT, sessions, encrypted API keys | ✅ |
+| Requirement | Solution / Technology                                 | Satisfied? |
+|------------|-------------------------------------------------------|------------|
+| OO Language | Java (Spring Boot backend)                            | ✅ |
+| RESTful Service | Kraken API, backend REST endpoints                    | ✅ |
+| Web-Based UI | React (JS/TS)                                         | ✅ |
+| Persisted State | MongoDB (users, accounts, orders, streak, portfolios) | ✅ |
+| Dependency Injection | Spring Boot services, repositories                    | ✅ |
+| Abstractions/Polymorphism | Domain models for trades/orders/accounts              | ✅ |
+| Responsive Design | React grid / drag-and-drop libs                       | ✅ |
+| Security/Data Protection | JWT, sessions, encrypted API keys                     | ✅ |
 
 ---
 
