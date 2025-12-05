@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.slf4j.Logger;
@@ -33,8 +34,14 @@ public class AuthController {
     public String processRegister(@ModelAttribute User user) {
         //logger.info("Register called with user: {}", user.getUsername());
         // save user
+         try {
+            userRepository.save(user); // try to save
+        } catch (DataIntegrityViolationException e) {
+            // If email already exists or any DB constraint fails, go to /error
+            return "redirect:/error";
+        }
 
-        //userRepository.save(user);
+        userRepository.save(user);
 
         return "redirect:/login";
     }
@@ -48,5 +55,10 @@ public class AuthController {
     @GetMapping("/register")
     public String registerPage() {
         return "register";
+    }
+
+    @GetMapping("/error")
+    public String errorPage() {
+        return "error"; // make sure you have src/main/resources/templates/error.html
     }
 }
