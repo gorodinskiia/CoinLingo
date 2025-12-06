@@ -13,6 +13,9 @@ import com.cointrade.terminal.PostgreSQL.NormalUserStrategy;
 import org.springframework.ui.Model;
 import org.springframework.ui.Model;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.slf4j.Logger;
@@ -63,14 +66,19 @@ public class AuthController {
         }
 
         logger.info("Normal user login");
-        return "redirect:/adminDashboard";
+        return "redirect:/dashboard";
 
     }
 
     @PostMapping("/register")
-    public String processRegister(@ModelAttribute User user) {
+    public String processRegister(  @RequestParam String username, 
+                                    @RequestParam String email, 
+                                    @RequestParam String password) {
         //logger.info("Register called with user: {}", user.getUsername());
         // save user
+        UserFactory factory = new ConcreteUserFactory();
+        User user = factory.createUser(username, email, password);
+
          try {
             userRepository.save(user); // try to save
         } catch (DataIntegrityViolationException e) {
