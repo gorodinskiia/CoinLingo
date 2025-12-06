@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a3ed48f4-0ecc-40ed-bd58-b2a5ed675044" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/MarketData.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/OrderBook.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/OrderPanel.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/componentStyles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/mocks/marketMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/mocks/ordersMock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Instructions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/client.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/MarketOverview.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/OpenOrders.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/OrderForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useMarketSocket.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Dashboard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/auth.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/gorodinskiia/CoinLingo.git",
+    "accountId": "c2b8ce51-e7c3-47b9-9160-4523608dcec5"
+  }
+}]]></component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "viteReactSettup",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "ts.external.directory.path": "C:\\Users\\suctu\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>
