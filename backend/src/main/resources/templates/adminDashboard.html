@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #020617;
+            padding: 1.5rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #38bdf8;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .card {
+            background-color: #020617;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #22c55e;
+        }
+
+        button {
+            background-color: #38bdf8;
+            color: #020617;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0ea5e9;
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Administrator Dashboard</h1>
+</header>
+
+<main>
+
+    <!-- User Management -->
+    <div class="card">
+        <h2>User Management</h2>
+        <p>View, modify, or remove users from the system.</p>
+        <form action="/admin/manageUsers" method="post">
+            <button type="submit">Manage Users</button>
+        </form>
+    </div>
+
+    <!-- Reset User Password -->
+    <div class="card">
+        <h2>Reset User Password</h2>
+        <p>Reset passwords for specific users.</p>
+        <form action="/admin/resetPassword" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <button type="submit">Reset Password</button>
+        </form>
+    </div>
+
+    <!-- View Orders -->
+    <div class="card">
+        <h2>All Orders</h2>
+        <p>View all orders in the system.</p>
+        <form action="/admin/viewOrders" method="post">
+            <button type="submit">View Orders</button>
+        </form>
+    </div>
+
+    <!-- System Settings -->
+    <div class="card">
+        <h2>System Controls</h2>
+        <p>Access system-level settings and administrative tools.</p>
+        <form action="/admin/systemSettings" method="post">
+            <button type="submit">System Settings</button>
+        </form>
+    </div>
+
+    <!-- Audit Logs -->
+    <div class="card">
+        <h2>Audit Logs</h2>
+        <p>Monitor trades, orders, and application activity.</p>
+        <form action="/admin/viewLogs" method="post">
+            <button type="submit">View Logs</button>
+        </form>
+    </div>
+
+</main>
+
+</body>
+</html>

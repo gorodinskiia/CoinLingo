@@ -46,17 +46,39 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Balance> balances = new ArrayList<>();
 
-    public User() 
-    {
+    @Transient // Not persisted in DB
+    private UserStrategy strategy;
 
-    }
+    public User() {}
 
     public User(String username, String password, String email, int dailyStreak) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.dailyStreak = dailyStreak;
+        this.strategy = new NormalUserStrategy(); // default strategy
     }
+
+    public User(String username, String password, String email, int dailyStreak, UserStrategy strategy) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.dailyStreak = dailyStreak;
+        this.strategy = strategy; // default strategy
+    }
+
+    public void performAccessRights() {
+        strategy.accessRights();
+    }
+
+    public void setStrategy(UserStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public UserStrategy getStrategy() {
+        return this.strategy;
+    }
+
 
     // ----- Getters & Setters -----
     public Long getId() 
