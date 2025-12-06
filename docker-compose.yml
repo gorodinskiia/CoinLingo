@@ -5,9 +5,9 @@ services:
     image: postgres:16
     container_name: cointrade-postgres
     environment:
-      POSTGRES_DB: cointrade
+      POSTGRES_DB: coinlingo
       POSTGRES_USER: coinuser
-      POSTGRES_PASSWORD: your_password
+      POSTGRES_PASSWORD: coinpass
     ports:
       - "5433:5432"  # host:container
     volumes:
@@ -22,9 +22,9 @@ services:
     depends_on:
       - postgres
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://cointrade-postgres:5432/cointrade
+      SPRING_DATASOURCE_URL: jdbc:postgresql://cointrade-postgres:5432/coinlingo
       SPRING_DATASOURCE_USERNAME: coinuser
-      SPRING_DATASOURCE_PASSWORD: your_password
+      SPRING_DATASOURCE_PASSWORD: coinpass
     restart: unless-stopped
 
 volumes:
