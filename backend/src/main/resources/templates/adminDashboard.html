@@ -58,7 +58,16 @@
 
         form {
             display: inline-block;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 0.5rem 0;
         }
     </style>
 </head>
@@ -75,18 +84,29 @@
     <div class="card">
         <h2>User Management</h2>
         <p>View, modify, or remove users from the system.</p>
-        <form action="/admin/manageUsers" method="post">
-            <button type="submit">Manage Users</button>
-        </form>
-    </div>
+        
+        <!-- Dynamically display users -->
+        <ul>
+            <li th:each="user : ${users}">
+                <span th:text="${user.username}"></span>
 
-    <!-- Reset User Password -->
-    <div class="card">
-        <h2>Reset User Password</h2>
-        <p>Reset passwords for specific users.</p>
-        <form action="/admin/resetPassword" method="post">
-            <input type="text" name="username" placeholder="Username" required>
-            <button type="submit">Reset Password</button>
+                <!-- Reset Password -->
+                <form th:action="@{/admin/resetPassword}" method="post">
+                    <input type="hidden" name="username" th:value="${user.username}" />
+                    <button type="submit">Reset Password</button>
+                </form>
+
+                <!-- Delete User -->
+                <form th:action="@{/admin/deleteUser}" method="post">
+                    <input type="hidden" name="username" th:value="${user.username}" />
+                    <button type="submit">Delete User</button>
+                </form>
+            </li>
+        </ul>
+
+        <!-- Refresh User List -->
+        <form action="/admin/manageUsers" method="post">
+            <button type="submit">Refresh Users</button>
         </form>
     </div>
 
