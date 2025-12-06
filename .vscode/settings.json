@@ -6,5 +6,6 @@
     "java.jdt.ls.java.home": "/usr/lib/jvm/java-21-openjdk-amd64",
     "files.watcherExclude": {
         "**/.gradle/**": true
-    }
+    },
+    "java.compile.nullAnalysis.mode": "automatic"
 }
