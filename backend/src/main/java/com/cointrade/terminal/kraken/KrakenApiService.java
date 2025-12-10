@@ -1,6 +1,8 @@
 package com.cointrade.terminal.kraken;
 
 import com.cointrade.terminal.model.TickerResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -8,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 public class KrakenApiService {
 
+    private static final Logger logger = LoggerFactory.getLogger(KrakenApiService.class);
     private final RestTemplate restTemplate;
     private final String baseUrl = "https://api.kraken.com/0/public";
 
@@ -27,7 +30,20 @@ public class KrakenApiService {
                 .path("/Ticker")
                 .queryParam("pair", pair)
                 .toUriString();
-        return restTemplate.getForObject(url, TickerResponse.class);
+        logger.info("Calling Kraken API: {}", url);
+        try {
+            // First get the raw response as String to see what we're getting
+            String rawResponse = restTemplate.getForObject(url, String.class);
+            logger.info("Raw response from Kraken: {}", rawResponse);
+
+            // Now try to parse it to TickerResponse
+            TickerResponse response = restTemplate.getForObject(url, TickerResponse.class);
+            logger.info("Parsed TickerResponse: {}", response);
+            return response;
+        } catch (Exception e) {
+            logger.error("Error fetching ticker information", e);
+            throw e;
+        }
     }
 
     public String getServerTime() {
@@ -77,6 +93,16 @@ public class KrakenApiService {
         }
         if (count != null) {
             builder.queryParam("count", count);
+        }
+        return restTemplate.getForObject(builder.toUriString(), String.class);
+    }
+
+    public String getRecentSpreads(String pair, Integer since) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(baseUrl)
+                .path("/Spread")
+                .queryParam("pair", pair);
+        if (since != null) {
+            builder.queryParam("since", since);
         }
         return restTemplate.getForObject(builder.toUriString(), String.class);
     }

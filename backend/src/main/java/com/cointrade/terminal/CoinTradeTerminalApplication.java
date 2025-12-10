@@ -17,8 +17,6 @@ public class CoinTradeTerminalApplication {
 
 	@Bean
 	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
-		return restTemplate;
+		return new RestTemplate();
 	}
 }

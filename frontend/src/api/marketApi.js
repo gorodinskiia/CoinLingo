@@ -8,9 +8,20 @@ export async function getMarketData(pair) {
     }
     const data = await response.json();
     // The Kraken API has a specific structure, so we need to parse it.
-    // The actual ticker info is in result[pair].c[0]
+    // Kraken normalizes pair names (e.g., XBTUSD -> XXBTZUSD), so we get the first key
     const result = data.result;
-    const price = result[pair].c[0];
+    if (!result || Object.keys(result).length === 0) {
+      throw new Error('No data returned from API');
+    }
+    // Get the first (and only) pair from the result
+    const pairKey = Object.keys(result)[0];
+    const tickerData = result[pairKey];
+
+    if (!tickerData || !tickerData.c || !tickerData.c[0]) {
+      throw new Error('Invalid ticker data structure');
+    }
+
+    const price = tickerData.c[0];
     return { price };
   } catch (error) {
     console.error("Could not fetch market data:", error);

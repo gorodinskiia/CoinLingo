@@ -22,9 +22,13 @@ public class MarketDataController {
         return krakenApiService.getSystemStatus();
     }
 
-    @GetMapping("/data")
+    @GetMapping(value = "/data", produces = "application/json")
     public TickerResponse getMarketData(@RequestParam String pair) {
-        return krakenApiService.getTickerInformation(pair);
+        TickerResponse response = krakenApiService.getTickerInformation(pair);
+        if (response == null) {
+            throw new RuntimeException("Failed to fetch ticker information for pair: " + pair);
+        }
+        return response;
     }
 
     @GetMapping("/time")
