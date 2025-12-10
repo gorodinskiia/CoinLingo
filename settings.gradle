@@ -1,0 +1,13 @@
+rootProject.name = 'Polymorphia-Homework-Sequence'
+
+// add to `settings.gradle` to let Gradle find toolchain downloads
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        mavenCentral()
+        // repository that provides JDK binaries (example for Adoptium)
+        maven {
+            url = uri("https://packages.adoptium.net/artifactory/jdk")
+        }
+    }
+}

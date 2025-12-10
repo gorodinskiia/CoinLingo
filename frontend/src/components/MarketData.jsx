@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { getTicker } from '../mocks/marketMock'
+import { getMarketData } from '../api/marketApi'
 import './componentStyles.css'
 
-export default function MarketData({ symbol = 'BTCUSD' }) {
+export default function MarketData({ symbol = 'XBTUSD' }) {
   const [price, setPrice] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -12,7 +12,7 @@ export default function MarketData({ symbol = 'BTCUSD' }) {
     async function fetch() {
       setLoading(true)
       try {
-        const res = await getTicker(symbol)
+        const res = await getMarketData(symbol)
         if (mounted) setPrice(res.price)
       } catch (e) {
         setError(String(e))
@@ -37,7 +37,7 @@ export default function MarketData({ symbol = 'BTCUSD' }) {
           {loading ? 'Loading...' : error ? `Error: ${error}` : `$${price}`}
         </div>
       </div>
-      <p className="muted">Live feed placeholder — Kraken integration coming soon</p>
+      <p className="muted">Live feed from Kraken</p>
     </div>
   )
 }
