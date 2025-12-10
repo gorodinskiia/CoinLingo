@@ -11,6 +11,11 @@
 
 ### _A web-based cryptocurrency trading simulator built with React, Spring Boot, and MongoDB._
 
+### To run front end:
+### cd frontend
+### npm install
+### npm run dev
+
 ---
 
 ## **📌 Overview**
