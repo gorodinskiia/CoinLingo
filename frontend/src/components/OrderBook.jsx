@@ -14,7 +14,7 @@ export default function OrderBook({ orders = [], onCancel = () => {} }) {
               <th>Price</th>
               <th>Amount</th>
               <th>Age</th>
-              <th />
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -27,9 +27,15 @@ export default function OrderBook({ orders = [], onCancel = () => {} }) {
                 <td>{o.amount}</td>
                 <td>{Math.round((Date.now() - o.createdAt) / 1000)}s</td>
                 <td>
-                  <button className="btn small" onClick={() => onCancel(o.id)} aria-label={`cancel-${o.id}`}>
-                    Cancel
-                  </button>
+                  {o.status === 'fulfilled' ? (
+                    <span className="badge" style={{ background: '#10b981', color: 'white' }}>
+                      Fulfilled
+                    </span>
+                  ) : (
+                    <button className="btn small" onClick={() => onCancel(o.id)} aria-label={`cancel-${o.id}`}>
+                      Cancel
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

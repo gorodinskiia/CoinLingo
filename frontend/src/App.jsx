@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { WalletProvider } from './contexts/WalletContext'
 import MarketData from './components/MarketData'
 import OrderBook from './components/OrderBook'
 import OrderPanel from './components/OrderPanel'
@@ -8,7 +9,7 @@ import './App.css'
 import './components/componentStyles.css'
 import * as ordersMock from './mocks/ordersMock'
 
-function App() {
+function AppContent() {
   const [orders, setOrders] = useState([])
   const [streak, setStreak] = useState(0)
   const [loading, setLoading] = useState(true)
@@ -94,6 +95,14 @@ function App() {
         </main>
       </div>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <WalletProvider>
+      <AppContent />
+    </WalletProvider>
   )
 }
 
