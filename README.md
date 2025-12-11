@@ -13,6 +13,10 @@
 
 ---
 
+## **Team**
+### Sena Uctuk
+### Ivan Gorodinski
+
 ## **📌 Overview**
 
 **CoinLingo Terminal** is a web-based, simulated cryptocurrency trading platform designed for education and demonstration.  
