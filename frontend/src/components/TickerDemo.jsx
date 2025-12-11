@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getTicker, bumpPrice, reset24hData, getAvailableSymbols } from '../mocks/marketMock'
 
-/**
- * Demo component to showcase all ticker mock features
- * This can be used for testing or as a reference implementation
- */
 export default function TickerDemo() {
   const [symbol, setSymbol] = useState('BTCUSD')
   const [ticker, setTicker] = useState(null)

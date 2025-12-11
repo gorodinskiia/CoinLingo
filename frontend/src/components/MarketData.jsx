@@ -62,15 +62,21 @@ export default function MarketData({ symbol: initialSymbol = 'BTCUSD' }) {
             </div>
             <div>
               <div className="muted" style={{ fontSize: '0.875rem' }}>24h Volume</div>
-              <div style={{ fontSize: '1.25rem', fontWeight: '600' }}>{ticker.volume}</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: '600' }}>
+                {ticker.volume ? ticker.volume.toLocaleString() : '0'}
+              </div>
             </div>
             <div>
               <div className="muted" style={{ fontSize: '0.875rem' }}>24h High</div>
-              <div style={{ fontSize: '1.25rem', fontWeight: '600' }}>${ticker.high.toLocaleString()}</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: '600' }}>
+                ${ticker.high ? ticker.high.toLocaleString() : '0'}
+              </div>
             </div>
             <div>
               <div className="muted" style={{ fontSize: '0.875rem' }}>24h Low</div>
-              <div style={{ fontSize: '1.25rem', fontWeight: '600' }}>${ticker.low.toLocaleString()}</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: '600' }}>
+                ${ticker.low ? ticker.low.toLocaleString() : '0'}
+              </div>
             </div>
           </div>
 
