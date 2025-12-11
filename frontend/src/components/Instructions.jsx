@@ -1,3 +1,4 @@
+import WalletDisplay from './Wallet/WalletDisplay'
 import './componentStyles.css'
 
 export default function Instructions({ streak = 0, onReset = () => {} }) {
@@ -5,16 +6,24 @@ export default function Instructions({ streak = 0, onReset = () => {} }) {
     <aside className="card instructions">
       <h2>How to use</h2>
       <p>
-        This area will host short instructional materials and tips for using the trading terminal. Use the Order Panel to place mock orders. Orders appear in the Order Book where you can cancel them.
+        Start with $5,000 virtual credits. Buy and sell crypto assets to simulate trading and learn the market!
       </p>
-      <h3>Streak</h3>
+
+      <h3>Daily Streak</h3>
       <div className="streak">{streak} day(s)</div>
       <button className="btn small" onClick={onReset}>Reset Streak</button>
-      <hr />
+
+      <hr style={{ margin: '1rem 0' }} />
+
+      <WalletDisplay />
+
+      <hr style={{ margin: '1rem 0' }} />
+
       <ol>
         <li>Check the Market price.</li>
-        <li>Place a buy or sell in the Order Panel.</li>
-        <li>Manage open orders in the Order Book.</li>
+        <li>Select asset and amount in Order Panel.</li>
+        <li>Click Buy or Sell to execute.</li>
+        <li>Watch your portfolio grow!</li>
       </ol>
     </aside>
   )

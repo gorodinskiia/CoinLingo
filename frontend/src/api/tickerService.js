@@ -10,7 +10,6 @@ export async function getTicker(symbol = 'BTCUSD') {
     return marketMock.getTicker(symbol)
   }
 
-  // Real API implementation /*
   try {
     const response = await fetch(`${API_BASE_URL}/ticker/${symbol}`)
     if (!response.ok) {
@@ -21,7 +20,6 @@ export async function getTicker(symbol = 'BTCUSD') {
     console.error('Error fetching ticker:', error)
     throw error
   }
-  */
 
   throw new Error('Real API not yet implemented')
 }

@@ -17,7 +17,6 @@ export async function getTicker(symbol = 'BTCUSD') {
   await new Promise((r) => setTimeout(r, 120))
   const base = basePrices[symbol] ?? 100
 
-  // Initialize if not set
   if (!basePrices[symbol]) basePrices[symbol] = base
   if (!highPrices[symbol]) highPrices[symbol] = base
   if (!lowPrices[symbol]) lowPrices[symbol] = base
